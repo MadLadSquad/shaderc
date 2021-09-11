@@ -3,8 +3,6 @@ set_property(DIRECTORY APPEND PROPERTY COMPILE_OPTIONS -w)
 
 set(SHADERC_THIRD_PARTY_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE STRING
   "Root location of all third_party projects")
-set(SHADERC_GOOGLE_TEST_DIR "${SHADERC_THIRD_PARTY_ROOT_DIR}/googletest" CACHE STRING
-  "Location of googletest source")
 set(SHADERC_SPIRV_TOOLS_DIR "${SHADERC_THIRD_PARTY_ROOT_DIR}/spirv-tools" CACHE STRING
   "Location of spirv-tools source")
 set(SHADERC_SPIRV_HEADERS_DIR "${SHADERC_THIRD_PARTY_ROOT_DIR}/spirv-headers" CACHE STRING
@@ -20,17 +18,6 @@ set(SHADERC_TINT_DIR "${SHADERC_THIRD_PARTY_ROOT_DIR}/tint" CACHE STRING
 
 set( SKIP_GLSLANG_INSTALL ${SHADERC_SKIP_INSTALL} )
 set( SKIP_SPIRV_TOOLS_INSTALL ${SHADERC_SKIP_INSTALL} )
-set( SKIP_GOOGLETEST_INSTALL ${SHADERC_SKIP_INSTALL} )
-
-# Configure third party projects.
-if(${SHADERC_ENABLE_TESTS})
-  if (IS_DIRECTORY ${SHADERC_GOOGLE_TEST_DIR})
-    add_subdirectory(${SHADERC_GOOGLE_TEST_DIR} googletest)
-  endif()
-  if (NOT TARGET gmock)
-    message(FATAL_ERROR "gmock was not found - required for tests")
-  endif()
-endif()
 
 set(OLD_PLATFORM_TOOLSET ${CMAKE_GENERATOR_TOOLSET})
 check_cxx_compiler_flag(-fPIC COMPILER_SUPPORTS_PIC)
