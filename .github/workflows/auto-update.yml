@@ -2,8 +2,8 @@ name: Create automatic pr
 # Set your repository name and the branch you want to pull from
 env:
   REPO_NAME: "google/shaderc"
-  BRANCH: "master"
-  UPSTREAM_BRANCH: "master"
+  BRANCH: "main"
+  UPSTREAM_BRANCH: "main"
   NAME: "shaderc"
   
 on:
