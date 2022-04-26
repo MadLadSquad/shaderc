@@ -17,7 +17,7 @@ jobs:
       - name: checking out code
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: ${{ env.BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
           lfs: true
           submodules: true
