@@ -77,9 +77,9 @@ EShMessages GetMessageRules(shaderc_util::Compiler::TargetEnv env,
                             bool debug_info) {
   using shaderc_util::Compiler;
   EShMessages result = EShMsgCascadingErrors;
-  if (lang == Compiler::SourceLanguage::HLSL) {
-    result = static_cast<EShMessages>(result | EShMsgReadHlsl);
-  }
+  //if (lang == Compiler::SourceLanguage::HLSL) {
+  //  result = static_cast<EShMessages>(result | EShMsgReadHlsl);
+  //}
   switch (env) {
     case Compiler::TargetEnv::OpenGLCompat:
       // The compiler will have already errored out before now.
@@ -93,12 +93,9 @@ EShMessages GetMessageRules(shaderc_util::Compiler::TargetEnv env,
           static_cast<EShMessages>(result | EShMsgSpvRules | EShMsgVulkanRules);
       break;
   }
-  if (hlsl_offsets) {
-    result = static_cast<EShMessages>(result | EShMsgHlslOffsets);
-  }
-  if (hlsl_16bit_types) {
-    result = static_cast<EShMessages>(result | EShMsgHlslEnable16BitTypes);
-  }
+  //if (hlsl_offsets) {
+  //  result = static_cast<EShMessages>(result | EShMsgHlslOffsets);
+  //}
   if (debug_info) {
     result = static_cast<EShMessages>(result | EShMsgDebugInfo);
   }
@@ -286,33 +283,13 @@ std::tuple<bool, std::vector<uint32_t>, size_t> Compiler::Compile(
       bases[static_cast<int>(UniformKind::StorageBuffer)]);
   shader.setShiftUavBinding(
       bases[static_cast<int>(UniformKind::UnorderedAccessView)]);
-  shader.setHlslIoMapping(hlsl_iomap_);
-  shader.setResourceSetBinding(
-      hlsl_explicit_bindings_[static_cast<int>(used_shader_stage)]);
+//  shader.setHlslIoMapping(hlsl_iomap_);
+  //shader.setResourceSetBinding(
+  //    hlsl_explicit_bindings_[static_cast<int>(used_shader_stage)]);
   shader.setEnvClient(target_client_info.client,
                       target_client_info.client_version);
   shader.setEnvTarget(target_client_info.target_language,
                       target_client_info.target_language_version);
-  if (hlsl_functionality1_enabled_) {
-    shader.setEnvTargetHlslFunctionality1();
-  }
-  if (vulkan_rules_relaxed_) {
-    glslang::EShSource language = glslang::EShSourceNone;
-    switch (source_language_) {
-      case SourceLanguage::GLSL:
-        language = glslang::EShSourceGlsl;
-        break;
-      case SourceLanguage::HLSL:
-        language = glslang::EShSourceHlsl;
-        break;
-    }
-    // This option will only be used if the Vulkan client is used.
-    // If new versions of GL_KHR_vulkan_glsl come out, it would make sense to
-    // let callers specify which version to use. For now, just use 100.
-    shader.setEnvInput(language, used_shader_stage, glslang::EShClientVulkan,
-                       100);
-    shader.setEnvInputVulkanRulesRelaxed();
-  }
   shader.setInvertY(invert_y_enabled_);
   shader.setNanMinMaxClamp(nan_clamp_);
 
@@ -358,11 +335,11 @@ std::tuple<bool, std::vector<uint32_t>, size_t> Compiler::Compile(
 
   std::vector<PassId> opt_passes;
 
-  if (hlsl_legalization_enabled_ && source_language_ == SourceLanguage::HLSL) {
-    // If from HLSL, run this passes to "legalize" the SPIR-V for Vulkan
-    // eg. forward and remove memory writes of opaque types.
-    opt_passes.push_back(PassId::kLegalizationPasses);
-  }
+  //if (hlsl_legalization_enabled_ && source_language_ == SourceLanguage::HLSL) {
+  //  // If from HLSL, run this passes to "legalize" the SPIR-V for Vulkan
+  //  // eg. forward and remove memory writes of opaque types.
+  //  opt_passes.push_back(PassId::kLegalizationPasses);
+  //}
 
   opt_passes.insert(opt_passes.end(), enabled_opt_passes_.begin(),
                     enabled_opt_passes_.end());
@@ -463,13 +440,13 @@ void Compiler::SetOptimizationLevel(Compiler::OptimizationLevel level) {
   }
 }
 
-void Compiler::EnableHlslLegalization(bool hlsl_legalization_enabled) {
-  hlsl_legalization_enabled_ = hlsl_legalization_enabled;
-}
+//void Compiler::EnableHlslLegalization(bool hlsl_legalization_enabled) {
+//  hlsl_legalization_enabled_ = hlsl_legalization_enabled;
+//}
 
-void Compiler::EnableHlslFunctionality1(bool enable) {
-  hlsl_functionality1_enabled_ = enable;
-}
+//void Compiler::EnableHlslFunctionality1(bool enable) {
+//  hlsl_functionality1_enabled_ = enable;
+//}
 
 void Compiler::SetVulkanRulesRelaxed(bool enable) {
   vulkan_rules_relaxed_ = enable;
@@ -504,9 +481,9 @@ std::tuple<bool, std::string, std::string> Compiler::PreprocessShader(
   }
   shader.setEnvClient(target_client_info.client,
                       target_client_info.client_version);
-  if (hlsl_functionality1_enabled_) {
-    shader.setEnvTargetHlslFunctionality1();
-  }
+  //if (hlsl_functionality1_enabled_) {
+  //  shader.setEnvTargetHlslFunctionality1();
+  //}
   shader.setInvertY(invert_y_enabled_);
   shader.setNanMinMaxClamp(nan_clamp_);
 

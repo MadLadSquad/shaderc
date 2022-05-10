@@ -67,7 +67,7 @@ class Compiler {
   // Source language
   enum class SourceLanguage {
     GLSL,  // The default
-    HLSL,
+    //HLSL,
   };
 
   // Target environment.
@@ -225,10 +225,10 @@ class Compiler {
   void SetOptimizationLevel(OptimizationLevel level);
 
   // Enables or disables HLSL legalization passes.
-  void EnableHlslLegalization(bool hlsl_legalization_enabled);
+  //void EnableHlslLegalization(bool hlsl_legalization_enabled);
 
   // Enables or disables extension SPV_GOOGLE_hlsl_functionality1
-  void EnableHlslFunctionality1(bool enable);
+  //void EnableHlslFunctionality1(bool enable);
 
   // Enables or disables HLSL 16-bit types.
   void EnableHlsl16BitTypes(bool enable);
@@ -324,34 +324,34 @@ class Compiler {
   void SetAutoMapLocations(bool auto_map) { auto_map_locations_ = auto_map; }
 
   // Use HLSL IO mapping rules for bindings.  Default is false.
-  void SetHlslIoMapping(bool hlsl_iomap) { hlsl_iomap_ = hlsl_iomap; }
-
-  // Use HLSL rules for offsets in "transparent" memory.  These allow for
-  // tighter packing of some combinations of types than standard GLSL packings.
-  void SetHlslOffsets(bool hlsl_offsets) { hlsl_offsets_ = hlsl_offsets; }
-
-  // Sets an explicit set and binding for the given HLSL register.
-  void SetHlslRegisterSetAndBinding(const std::string& reg,
-                                    const std::string& set,
-                                    const std::string& binding) {
-    for (auto stage : stages()) {
-      SetHlslRegisterSetAndBindingForStage(stage, reg, set, binding);
-    }
-  }
-
-  // Sets an explicit set and binding for the given HLSL register in the given
-  // shader stage.  For example,
-  //    SetHlslRegisterSetAndBinding(Stage::Fragment, "t1", "4", "5")
-  // means register "t1" in a fragment shader should map to binding 5 in set 4.
-  // (Glslang wants this data as strings, not ints or enums.)  The string data
-  // is copied.
-  void SetHlslRegisterSetAndBindingForStage(Stage stage, const std::string& reg,
-                                            const std::string& set,
-                                            const std::string& binding) {
-    hlsl_explicit_bindings_[static_cast<int>(stage)].push_back(reg);
-    hlsl_explicit_bindings_[static_cast<int>(stage)].push_back(set);
-    hlsl_explicit_bindings_[static_cast<int>(stage)].push_back(binding);
-  }
+  //void SetHlslIoMapping(bool hlsl_iomap) { hlsl_iomap_ = hlsl_iomap; }
+  //
+  //// Use HLSL rules for offsets in "transparent" memory.  These allow for
+  //// tighter packing of some combinations of types than standard GLSL packings.
+  //void SetHlslOffsets(bool hlsl_offsets) { hlsl_offsets_ = hlsl_offsets; }
+  //
+  //// Sets an explicit set and binding for the given HLSL register.
+  //void SetHlslRegisterSetAndBinding(const std::string& reg,
+  //                                  const std::string& set,
+  //                                  const std::string& binding) {
+  //  for (auto stage : stages()) {
+  //    SetHlslRegisterSetAndBindingForStage(stage, reg, set, binding);
+  //  }
+  //}
+  //
+  //// Sets an explicit set and binding for the given HLSL register in the given
+  //// shader stage.  For example,
+  ////    SetHlslRegisterSetAndBinding(Stage::Fragment, "t1", "4", "5")
+  //// means register "t1" in a fragment shader should map to binding 5 in set 4.
+  //// (Glslang wants this data as strings, not ints or enums.)  The string data is
+  //// copied.
+  //void SetHlslRegisterSetAndBindingForStage(Stage stage, const std::string& reg,
+  //                                          const std::string& set,
+  //                                          const std::string& binding) {
+  //  hlsl_explicit_bindings_[static_cast<int>(stage)].push_back(reg);
+  //  hlsl_explicit_bindings_[static_cast<int>(stage)].push_back(set);
+  //  hlsl_explicit_bindings_[static_cast<int>(stage)].push_back(binding);
+  //}
 
   // Compiles the shader source in the input_source_string parameter.
   //

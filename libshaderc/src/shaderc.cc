@@ -416,8 +416,8 @@ void shaderc_compile_options_add_macro_definition(
 void shaderc_compile_options_set_source_language(
     shaderc_compile_options_t options, shaderc_source_language set_lang) {
   auto lang = shaderc_util::Compiler::SourceLanguage::GLSL;
-  if (set_lang == shaderc_source_language_hlsl)
-    lang = shaderc_util::Compiler::SourceLanguage::HLSL;
+  //if (set_lang == shaderc_source_language_hlsl)
+  //  lang = shaderc_util::Compiler::SourceLanguage::HLSL;
   options->compiler.SetSourceLanguage(lang);
 }
 
@@ -512,15 +512,15 @@ void shaderc_compile_options_set_auto_combined_image_sampler(
   options->compiler.SetAutoCombinedImageSampler(upgrade);
 }
 
-void shaderc_compile_options_set_hlsl_io_mapping(
-    shaderc_compile_options_t options, bool hlsl_iomap) {
-  options->compiler.SetHlslIoMapping(hlsl_iomap);
-}
-
-void shaderc_compile_options_set_hlsl_offsets(shaderc_compile_options_t options,
-                                              bool hlsl_offsets) {
-  options->compiler.SetHlslOffsets(hlsl_offsets);
-}
+//void shaderc_compile_options_set_hlsl_io_mapping(
+//    shaderc_compile_options_t options, bool hlsl_iomap) {
+//  options->compiler.SetHlslIoMapping(hlsl_iomap);
+//}
+//
+//void shaderc_compile_options_set_hlsl_offsets(shaderc_compile_options_t options,
+//                                              bool hlsl_offsets) {
+//  options->compiler.SetHlslOffsets(hlsl_offsets);
+//}
 
 void shaderc_compile_options_set_binding_base(shaderc_compile_options_t options,
                                               shaderc_uniform_kind kind,
@@ -545,23 +545,23 @@ void shaderc_compile_options_set_auto_map_locations(
   options->compiler.SetAutoMapLocations(auto_map);
 }
 
-void shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage(
-    shaderc_compile_options_t options, shaderc_shader_kind shader_kind,
-    const char* reg, const char* set, const char* binding) {
-  options->compiler.SetHlslRegisterSetAndBindingForStage(GetStage(shader_kind),
-                                                         reg, set, binding);
-}
+//void shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage(
+//    shaderc_compile_options_t options, shaderc_shader_kind shader_kind,
+//    const char* reg, const char* set, const char* binding) {
+//  options->compiler.SetHlslRegisterSetAndBindingForStage(GetStage(shader_kind),
+//                                                         reg, set, binding);
+//}
 
-void shaderc_compile_options_set_hlsl_register_set_and_binding(
-    shaderc_compile_options_t options, const char* reg, const char* set,
-    const char* binding) {
-  options->compiler.SetHlslRegisterSetAndBinding(reg, set, binding);
-}
-
-void shaderc_compile_options_set_hlsl_functionality1(
-    shaderc_compile_options_t options, bool enable) {
-  options->compiler.EnableHlslFunctionality1(enable);
-}
+//void shaderc_compile_options_set_hlsl_register_set_and_binding(
+//    shaderc_compile_options_t options, const char* reg, const char* set,
+//    const char* binding) {
+//  options->compiler.SetHlslRegisterSetAndBinding(reg, set, binding);
+//}
+//
+//void shaderc_compile_options_set_hlsl_functionality1(
+//    shaderc_compile_options_t options, bool enable) {
+//  options->compiler.EnableHlslFunctionality1(enable);
+//}
 
 void shaderc_compile_options_set_hlsl_16bit_types(
     shaderc_compile_options_t options, bool enable) {
