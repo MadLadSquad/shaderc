@@ -24,7 +24,7 @@ check_cxx_compiler_flag(-fPIC COMPILER_SUPPORTS_PIC)
 
 
 if (IS_DIRECTORY ${SHADERC_SPIRV_HEADERS_DIR})
-  set(SPIRV_HEADERS_SKIP_EXAMPLES ON)
+  set(SPIRV_HEADERS_SKIP_EXAMPLES OFF)
   add_subdirectory(${SHADERC_SPIRV_HEADERS_DIR} spirv-headers)
 endif()
 
