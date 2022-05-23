@@ -494,6 +494,7 @@ std::tuple<bool, std::string, std::string> Compiler::PreprocessShader(
       EShMsgOnlyPreprocessor |
       GetMessageRules(target_env_, source_language_, hlsl_offsets_,
                       hlsl_16bit_types_enabled_, false));
+                      false));
 
   std::string preprocessed_shader;
   const bool success = shader.preprocess(

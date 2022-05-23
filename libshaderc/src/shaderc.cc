@@ -111,6 +111,7 @@ class StageDeducer {
   explicit StageDeducer(
       shaderc_shader_kind kind = shaderc_glsl_infer_from_source)
       : kind_(kind), error_(false) {}
+      : kind_(kind), error_(false){}
   // The method that underlying glslang will call to determine the shader stage
   // to be used in current compilation. It is called only when there is neither
   // forced shader kind (or say stage, in the view of glslang), nor #pragma
