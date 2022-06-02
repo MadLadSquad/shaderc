@@ -3,8 +3,6 @@ use_relative_paths = True
 vars = {
   'google_git':  'https://github.com/google',
   'khronos_git': 'https://github.com/MadLadSquad',
-
-<<<<<<< HEAD
   'glslang_revision': 'master',
   'spirv_headers_revision': 'master',
   'spirv_tools_revision': 'master',
