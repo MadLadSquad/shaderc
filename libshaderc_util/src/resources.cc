@@ -125,7 +125,18 @@ const TBuiltInResource kDefaultTBuiltInResource = {
     /* .maxTaskWorkGroupSizeY_NV = */ 1,
     /* .maxTaskWorkGroupSizeZ_NV = */ 1,
     /* .maxMeshViewCountNV = */ 4,
+    // ======================= BEGIN MESH AND TASK PATCH FOR COMPILATION ERROR ON LATEST SHADERC =======================
+    /* .maxMeshOutputVerticesEXT = */ 256,
+    /* .maxMeshOutputPrimitivesEXT = */ 512,
+    /* int maxMeshWorkGroupSizeX_EXT = */ 128,
+    /* int maxMeshWorkGroupSizeY_EXT = */ 128,
+    /* int maxMeshWorkGroupSizeZ_EXT = */ 128,
+    /* int maxTaskWorkGroupSizeX_EXT = */ 128,
+    /* int maxTaskWorkGroupSizeY_EXT = */ 128,
+    /* int maxTaskWorkGroupSizeZ_EXT = */ 128,
     /* .maxDualSourceDrawBuffersEXT = */ 1,
+    /* .maxMeshViewCountEXT = */ 4,
+    // ======================== END MESH AND TASK PATCH FOR COMPILATION ERROR ON LATEST SHADERC ========================
     // This is the glslang TLimits structure.
     // It defines whether or not the following features are enabled.
     // We want them to all be enabled.
