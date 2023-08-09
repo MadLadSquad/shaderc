@@ -1,7 +1,6 @@
 use_relative_paths = True
 
 vars = {
-  'abseil_git':  'https://github.com/abseil',
   'google_git':  'https://github.com/google',
   'khronos_git': 'https://github.com/MadLadSquad',
   'glslang_revision': 'master',
