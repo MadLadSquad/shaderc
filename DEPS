@@ -2,10 +2,22 @@ use_relative_paths = True
 
 vars = {
   'google_git':  'https://github.com/google',
+<<<<<<< HEAD
   'khronos_git': 'https://github.com/MadLadSquad',
   'glslang_revision': 'master',
   'spirv_headers_revision': 'master',
   'spirv_tools_revision': 'master',
+=======
+  'khronos_git': 'https://github.com/KhronosGroup',
+
+  'abseil_revision': '5be22f98733c674d532598454ae729253bc53e82',
+  'effcee_revision' : '19b4aa87af25cb4ee779a071409732f34bfc305c',
+  'glslang_revision': '2bfacdac91d5d9ba6bab7b4da52eb79c2300cd45',
+  'googletest_revision': 'e47544ad31cb3ceecd04cc13e8fe556f8df9fe0b',
+  're2_revision': 'c9cba76063cf4235c1a15dd14a24a4ef8d623761',
+  'spirv_headers_revision': '79743b899fde5c954897b2694291002626358fac',
+  'spirv_tools_revision': '27673a054447e37810a38e7ce8d35a0a88af4a75',
+>>>>>>> 00defdd7b98737565fe690d24981a47eeb40ff1c
 }
 
 deps = {
