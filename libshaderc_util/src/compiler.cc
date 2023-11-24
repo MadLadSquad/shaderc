@@ -297,8 +297,8 @@ std::tuple<bool, std::vector<uint32_t>, size_t> Compiler::Compile(
       case SourceLanguage::GLSL:
         language = glslang::EShSourceGlsl;
         break;
-      case SourceLanguage::HLSL:
-        language = glslang::EShSourceHlsl;
+      //case SourceLanguage::HLSL:
+      //  language = glslang::EShSourceHlsl;
         break;
     }
     // This option will only be used if the Vulkan client is used.
