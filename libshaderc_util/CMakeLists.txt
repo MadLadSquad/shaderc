@@ -46,5 +46,5 @@ target_include_directories(shaderc_util
 
 find_package(Threads)
 target_link_libraries(shaderc_util PRIVATE
-  glslang OSDependent OGLCompiler glslang SPIRV
+  glslang SPIRV
   SPIRV-Tools-opt ${CMAKE_THREAD_LIBS_INIT})
