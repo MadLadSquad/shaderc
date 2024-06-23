@@ -12,12 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.22.1)
 
-=======
-cmake_minimum_required(VERSION 2.8.12)
->>>>>>> a30647a (First commit)
 project(shaderc)
 #enable_testing()
 
@@ -67,11 +63,7 @@ endif()
 
 option(SHADERC_ENABLE_WERROR_COMPILE "Enable passing -Werror to compiler, if available" ON)
 
-<<<<<<< HEAD
 set (CMAKE_CXX_STANDARD 17)
-=======
-set (CMAKE_CXX_STANDARD 11)
->>>>>>> a30647a (First commit)
 
 include(GNUInstallDirs)
 include(cmake/setup_build.cmake)
@@ -99,56 +91,30 @@ if (COMPILER_SUPPORTS_EXTRA_SEMI_WARNING)
     add_compile_options("-Wextra-semi")
 endif()
 
-<<<<<<< HEAD
 find_package(Python COMPONENTS Interpreter REQUIRED)
 
 if (SHADERC_ENABLE_COPYRIGHT_CHECK)
   add_custom_target(check-copyright ALL
     ${Python_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/utils/add_copyright.py
-=======
-find_host_package(PythonInterp 3 REQUIRED)
-
-if (SHADERC_ENABLE_COPYRIGHT_CHECK)
-  add_custom_target(check-copyright ALL
-    ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/utils/add_copyright.py
->>>>>>> a30647a (First commit)
     --check
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Check copyright")
 endif()
 
 add_custom_target(add-copyright
-<<<<<<< HEAD
   ${Python_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/utils/add_copyright.py
-=======
-  ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/utils/add_copyright.py
->>>>>>> a30647a (First commit)
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT "Add copyright")
 
 if(MSVC)
   option(SHADERC_ENABLE_SHARED_CRT
           "Use the shared CRT instead of the static CRT"
-<<<<<<< HEAD
 		  OFF)
   if (SHADERC_ENABLE_SHARED_CRT)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
   else()
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   endif()
-=======
-          ${SHADERC_ENABLE_SHARED_CRT})
-  if (NOT SHADERC_ENABLE_SHARED_CRT)
-    # Link executables statically by replacing /MD with /MT everywhere.
-    foreach(flag_var
-        CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE
-        CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO)
-      if(${flag_var} MATCHES "/MD")
-        string(REGEX REPLACE "/MD" "/MT" ${flag_var} "${${flag_var}}")
-      endif(${flag_var} MATCHES "/MD")
-    endforeach(flag_var)
-  endif(NOT SHADERC_ENABLE_SHARED_CRT)
->>>>>>> a30647a (First commit)
 endif(MSVC)
 
 
@@ -160,11 +126,7 @@ add_subdirectory(libshaderc_util)
 add_subdirectory(libshaderc)
 
 add_custom_target(build-version
-<<<<<<< HEAD
   ${Python_EXECUTABLE}
-=======
-  ${PYTHON_EXECUTABLE}
->>>>>>> a30647a (First commit)
   ${CMAKE_CURRENT_SOURCE_DIR}/utils/update_build_version.py
   ${shaderc_SOURCE_DIR} ${spirv-tools_SOURCE_DIR} ${glslang_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/build-version.inc
   COMMENT "Update build-version.inc in the Shaderc build directory (if necessary).")
