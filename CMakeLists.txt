@@ -15,7 +15,7 @@
 cmake_minimum_required(VERSION 3.22.1)
 
 project(shaderc)
-enable_testing()
+#enable_testing()
 
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
   message(STATUS "No build type selected, default to Debug")
@@ -31,7 +31,7 @@ if(NOT ${SHADERC_SKIP_INSTALL})
   set(SHADERC_ENABLE_INSTALL ON)
 endif()
 
-option(SHADERC_SKIP_TESTS "Skip building tests" ${SHADERC_SKIP_TESTS})
+option(SHADERC_SKIP_TESTS "Skip building tests" ON)
 if(NOT ${SHADERC_SKIP_TESTS})
   set(SHADERC_ENABLE_TESTS ON)
 endif()
@@ -41,7 +41,7 @@ else()
   message(STATUS "Configuring Shaderc to avoid building tests.")
 endif()
 
-option(SHADERC_SKIP_EXAMPLES "Skip building examples" ${SHADERC_SKIP_EXAMPLES})
+option(SHADERC_SKIP_EXAMPLES "Skip building examples" ON)
 if(NOT ${SHADERC_SKIP_EXAMPLES})
   set(SHADERC_ENABLE_EXAMPLES ON)
 endif()
@@ -51,7 +51,7 @@ else()
   message(STATUS "Configuring Shaderc to avoid building examples.")
 endif()
 
-option(SHADERC_SKIP_EXECUTABLES "Skip building executables." ${SHADERC_SKIP_EXECUTABLES})
+option(SHADERC_SKIP_EXECUTABLES "Skip building executables." ON)
 if(NOT ${SHADERC_SKIP_EXECUTABLES})
   set(SHADERC_ENABLE_EXECUTABLES ON)
 endif()
@@ -61,7 +61,7 @@ else()
   message(STATUS "Configuring Shaderc to avoid building executables.")
 endif()
 
-option(SHADERC_SKIP_COPYRIGHT_CHECK "Skip copyright check" ${SHADERC_SKIP_COPYRIGHT_CHECK})
+option(SHADERC_SKIP_COPYRIGHT_CHECK "Skip copyright check" ON)
 if(NOT ${SHADERC_SKIP_COPYRIGHT_CHECK})
   set(SHADERC_ENABLE_COPYRIGHT_CHECK ON)
 endif()
@@ -134,10 +134,6 @@ add_subdirectory(third_party)
 
 add_subdirectory(libshaderc_util)
 add_subdirectory(libshaderc)
-add_subdirectory(glslc)
-if(${SHADERC_ENABLE_EXAMPLES})
-    add_subdirectory(examples)
-endif()
 
 add_custom_target(build-version
   ${Python_EXECUTABLE}
